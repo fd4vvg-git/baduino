@@ -7,7 +7,7 @@ A state of the art security (button) controls when the payload is executed for e
 
 Button is wired to Digital Pin 2 and ground.
 
-This is purely a template, payloads will be added in the near future.
+This is purely a template, payloads will be added in the near future. For now, use the Keyboard.h library to make payloads.
 
 I AM NOT RESPONSIBLE FOR ANY DUMB SHIT YOU DO WITH THIS
 
