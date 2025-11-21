@@ -18,14 +18,14 @@ void runPayload() {
 }
 
 void loop() {
-int safteyState = digitalRead(safetyPin);
+int safetyState = digitalRead(safetyPin);
 
-if (safteyState == LOW && payloadExecuted == false) {
+if (safetyState == LOW && payloadExecuted == false) {
   runPayload();
 payloadExecuted = true;
 }
 
-if (safteyState == HIGH) {
+if (safetyState == HIGH) {
   payloadExecuted=false;
 }
 
