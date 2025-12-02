@@ -2,7 +2,7 @@
 
 #include <Keyboard.h>
 
-const int safetyPin = 2;
+const int safetyPin = 3;
 
 bool payloadExecuted = false;
 
