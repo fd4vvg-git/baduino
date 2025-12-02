@@ -12,7 +12,6 @@ Example: 'python3 Ducky2Duino.py -h' for help menu.
 
 --> Leave a comment for any suggestions.
 
-I AM NOT RESPONSIBLE FOR ANY DUMB SH*T YOU DO WITH THIS
+For all educational purposes of course (dont hack anyone).
 
-Thanks,
 Fd4wg
