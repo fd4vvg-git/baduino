@@ -11,7 +11,7 @@ This is purely a template, payloads will be added in the near future. For now, u
 
 --> Leave a comment for any suggestions.
 
-I AM NOT RESPONSIBLE FOR ANY DUMB SHIT YOU DO WITH THIS
+I AM NOT RESPONSIBLE FOR ANY DUMB SH*T YOU DO WITH THIS
 
 Thanks,
 Fd4wg
