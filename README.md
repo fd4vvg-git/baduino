@@ -7,7 +7,7 @@ A state of the art security (4 pin button) controls when the payload is executed
 
 Button is wired to Digital Pin 3 and ground.
 
-This is purely a template, payloads will be added in the near future. For now, use the Keyboard.h library to make payloads.
+Use Ducky2Duino.py (made by me), to make payloads from duckyscript. It works on most ducky scripts made for the usb rubber ducky. Some complex duckyscript 3.0 syntax doesn't work with it.
 
 --> Leave a comment for any suggestions.
 
