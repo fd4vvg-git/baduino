@@ -1,4 +1,5 @@
 import argparse
+import os
 
 logo =r"""
 
@@ -12,7 +13,7 @@ logo =r"""
 
 # global settings
 
-DEFAULT_DELAY = 0
+DEFAULTDELAY = 0
 LAST_COMMAND = None
 
 #template
@@ -117,9 +118,9 @@ def handle_rem(args, raw):
     return f"// {raw[4:].strip()}"
 
 def handle_default_delay(args, raw):
-    global DEFAULT_DELAY
-    DEFAULT_DELAY = int(args[0])
-    return f"// DEFAULT_DELAY set to {DEFAULT_DELAY}ms"
+    global DEFAULTDELAY
+    DEFAULTDELAY = int(args[0])
+    return f"// DEFAULTDELAY set to {DEFAULTDELAY}ms"
 
 def handle_repeat(args, raw):
     global LAST_COMMAND
@@ -152,7 +153,7 @@ COMMANDS = {
     "DELAY": handle_delay,
     "STRING": handle_string,
     "REM": handle_rem,
-    "DEFAULT_DELAY": handle_default_delay,
+    "DEFAULTDELAY": handle_default_delay,
     "REPEAT": handle_repeat,
 }
 
@@ -172,8 +173,8 @@ def interpret_line(line):
     else:
         cpp = handle_combo(parts)
 
-    if DEFAULT_DELAY > 0 and cpp and not cpp.startswith("//"):
-        cpp += f"\ndelay({DEFAULT_DELAY});"
+    if DEFAULTDELAY > 0 and cpp and not cpp.startswith("//"):
+        cpp += f"\ndelay({DEFAULTDELAY});"
 
     return cpp
 
@@ -190,10 +191,15 @@ def main():
     parser.add_argument("-t", "--template", action="store_true",
                         help="Wraps output in my Baduino template")
     args = parser.parse_args()
+    
+    scriptDir = os.path.dirname(os.path.abspath(__file__))
+    baseDir = os.path.join(scriptDir, "ducky2duino")
+    os.makedirs(baseDir, exist_ok=True)
+    inputPath = os.path.join(baseDir, args.input_file)
 
     cpp_lines = []
-
-    with open(args.input_file, "r") as f:
+    
+    with open(inputPath, "r") as f:
         for line in f:
             cpp_lines.append(interpret_line(line))
 
@@ -204,7 +210,9 @@ def main():
         output_text = f"{templateHeader}\n{tabbedOutput}\n{templateFooter}"
 
     if args.output:
-        with open(args.output, "w") as f:
+        output_filename = args.output if args.output else "output.txt"
+        outputPath = os.path.join(baseDir, output_filename)
+        with open(outputPath, "w") as f:
             f.write(output_text)
         print(f"Baduino Payload saved to {args.output}\n")
     else:
